@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Email Generator</title>
+    <title>Qisstpay Email Generator</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 </head>
 <body>
@@ -53,9 +53,7 @@
     </div>
 
         <div class="container row">
-           
             <br/>
-           
             <hr/>
             <div  class="col-sm-6 preview code" style="display: none;">
                 
@@ -81,22 +79,19 @@
             </div>
 
             <div class="col-sm-6 preview" style="display: none;">
-                
                 <textarea id="displayCode" class="form-control" rows="15"></textarea>
             </div>
         </div>
     </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
 <script>
     $(document).ready(function(){
-        // Get value on button click and show alert
-        $("#submit").click(function(){
-           
+        
+        $("#submit").click(function(){ 
             var name = $("#name").val();
             var email = $("#email").val();
             var phone = $("#phone").val();
@@ -111,17 +106,12 @@
                      $('#sigName').html(name)
                     $('#sigEmail').html('<b>Email : <a href="mailto:'+email+'">' + email +'</a></b>')
                     $('#sigPhone').html('<b>Phone : ' + phone +'</b>')
-                    $('#sigDesignation').html('<b>'+designation +'</b>')
-                   
-                    
-                   
+                    $('#sigDesignation').html('<b>'+designation +'</b>')      
             }
-        });
-
-        
+        });   
     });
 
-    function previewFile(){
+function previewFile(){
         var file = $("#image").get(0).files[0];
  
         if(file){
@@ -134,84 +124,62 @@
         }
     }
 
-
-    //dropbox
-
-
-    function upload(){
-        
+function upload(){
+    //to upload image into dropbox 
         const name = (0|Math.random()*9e6).toString(36)
-    
         const files = document.querySelector('[name=file]').files;
         const file = files[0];
         const ext = file.type.split("/").pop();
-        /**
- * Two variables should already be set.
- * dropboxToken = OAuth token received then signing in with OAuth.
- * file = file object selected in the file widget.
- */
-
-var xhr = new XMLHttpRequest();
-
-xhr.upload.onprogress = function(evt) {
-    var percentComplete = parseInt(100.0 * evt.loaded / evt.total);
-    console.log(percentComplete)
-    // Upload in progress. Do something here with the percent complete.
-};
-
-xhr.onload = function() {
-    if (xhr.status === 200) {
-        var fileInfo = JSON.parse(xhr.response);
-        // Upload succeeded. Do something here with the file info.
-        getDownloadUrl(fileInfo.path_display)
-        console.log(fileInfo)
+        var xhr = new XMLHttpRequest();
+        xhr.upload.onprogress = function(evt) {
+            var percentComplete = parseInt(100.0 * evt.loaded / evt.total);
+            console.log(percentComplete)
+        };
+        xhr.onload = function() {
+            if (xhr.status === 200) {
+                var fileInfo = JSON.parse(xhr.response);
+                getDownloadUrl(fileInfo.path_display)
+                console.log(fileInfo)
+            }
+            else {
+                var errorMessage = xhr.response || 'Unable to upload file';
+                console.log(errorMessage)
+            }
+        };
+        const dropboxToken = 'TigJxrsCv28AAAAAAAAAAbMpG1u-1MpIt3WH0SnF1kAFC3DS1r8hKErIkjmaJI1v'
+        xhr.open('POST', 'https://content.dropboxapi.com/2/files/upload');
+        xhr.setRequestHeader('Authorization', 'Bearer ' + dropboxToken);
+        xhr.setRequestHeader('Content-Type', 'application/octet-stream');
+        xhr.setRequestHeader('Dropbox-API-Arg', JSON.stringify({
+            path: '/Apps/EmailSignature/' +  name  + ext,
+            mode: 'add',
+            autorename: true,
+            mute: false
+        }));
+        xhr.send(file);
     }
-    else {
-        var errorMessage = xhr.response || 'Unable to upload file';
-        // Upload failed. Do something here with the error.
-        console.log(errorMessage)
-    }
-};
-
-const dropboxToken = 'TigJxrsCv28AAAAAAAAAAbMpG1u-1MpIt3WH0SnF1kAFC3DS1r8hKErIkjmaJI1v'
-xhr.open('POST', 'https://content.dropboxapi.com/2/files/upload');
-xhr.setRequestHeader('Authorization', 'Bearer ' + dropboxToken);
-xhr.setRequestHeader('Content-Type', 'application/octet-stream');
-xhr.setRequestHeader('Dropbox-API-Arg', JSON.stringify({
-    path: '/Apps/EmailSignature/' +  name  + ext,
-    mode: 'add',
-    autorename: true,
-    mute: false
-}));
-xhr.send(file);
-    }
-
-    function getDownloadUrl(fileName){
+function getDownloadUrl(fileName){
         var xhr = new XMLHttpRequest();
         xhr.onload = function() {
-    if (xhr.status === 200) {
-        var fileInfo = JSON.parse(xhr.response);
-        // Upload succeeded. Do something here with the file info.
-        var finalUrl = fileInfo.url.substring(0, fileInfo.url.length - 1) + "1";
-        console.log(finalUrl)
-        $("#profileImage").attr("src",finalUrl);
-        $('.preview').show();
-        $('.loading').hide();
-        $('#displayCode').html($('.code').html())
-        console.log(fileInfo)
-    }
-    else {
-        var errorMessage = xhr.response || 'Unable to upload file';
-        // Upload failed. Do something here with the error.
-        console.log(errorMessage)
-    }
-};
-
-        const dropboxToken = 'TigJxrsCv28AAAAAAAAAAbMpG1u-1MpIt3WH0SnF1kAFC3DS1r8hKErIkjmaJI1v'
-xhr.open('POST', 'https://api.dropboxapi.com/2/sharing/create_shared_link_with_settings');
-xhr.setRequestHeader('Authorization', 'Bearer ' + dropboxToken);
-xhr.setRequestHeader('Content-Type', 'application/json');
-xhr.send(JSON.stringify({path:fileName}));
+        if (xhr.status === 200) {
+            var fileInfo = JSON.parse(xhr.response);
+            // Upload succeeded. Do something here with the file info.
+            var finalUrl = fileInfo.url.substring(0, fileInfo.url.length - 1) + "1";
+            $("#profileImage").attr("src",finalUrl);
+            $('.preview').show();
+            $('.loading').hide();
+            $('#displayCode').html($('.code').html())
+        }
+        else {
+            var errorMessage = xhr.response || 'Unable to upload Picture';
+            alert(errorMessage)
+        }
+    };
+    const dropboxToken = 'TigJxrsCv28AAAAAAAAAAbMpG1u-1MpIt3WH0SnF1kAFC3DS1r8hKErIkjmaJI1v'
+    xhr.open('POST', 'https://api.dropboxapi.com/2/sharing/create_shared_link_with_settings');
+    xhr.setRequestHeader('Authorization', 'Bearer ' + dropboxToken);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.send(JSON.stringify({path:fileName}));
     }
     </script>
 </body>
