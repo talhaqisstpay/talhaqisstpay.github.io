@@ -133,17 +133,17 @@ function upload(){
         var xhr = new XMLHttpRequest();
         xhr.upload.onprogress = function(evt) {
             var percentComplete = parseInt(100.0 * evt.loaded / evt.total);
-            console.log(percentComplete)
+            
         };
         xhr.onload = function() {
             if (xhr.status === 200) {
                 var fileInfo = JSON.parse(xhr.response);
                 getDownloadUrl(fileInfo.path_display)
-                console.log(fileInfo)
+                
             }
             else {
                 var errorMessage = xhr.response || 'Unable to upload file';
-                console.log(errorMessage)
+                alert(errorMessage)
             }
         };
         const dropboxToken = 'TigJxrsCv28AAAAAAAAAAbMpG1u-1MpIt3WH0SnF1kAFC3DS1r8hKErIkjmaJI1v'
@@ -151,7 +151,7 @@ function upload(){
         xhr.setRequestHeader('Authorization', 'Bearer ' + dropboxToken);
         xhr.setRequestHeader('Content-Type', 'application/octet-stream');
         xhr.setRequestHeader('Dropbox-API-Arg', JSON.stringify({
-            path: '/Apps/EmailSignature/' +  name  + ext,
+            path: '/Apps/EmailSignature/' +  name +"."+ ext,
             mode: 'add',
             autorename: true,
             mute: false
