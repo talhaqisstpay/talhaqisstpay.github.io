@@ -164,7 +164,7 @@ function getDownloadUrl(fileName){
         if (xhr.status === 200) {
             var fileInfo = JSON.parse(xhr.response);
             // Upload succeeded. Do something here with the file info.
-            var finalUrl = fileInfo.url.substring(0, fileInfo.url.length - 1) + "1";
+            var finalUrl = fileInfo.url.substring(0, fileInfo.url.length - 4) + "raw=1";
             $("#profileImage").attr("src",finalUrl);
             $('.preview').show();
             $('.loading').hide();
