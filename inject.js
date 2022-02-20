@@ -389,41 +389,8 @@ var qisstpay_current_timestamp=Date.now();
   	
 
  
-      
   
-    //Modal code for product page
-	let qisstpay_modal = `<div class="qp8911_modal custom_modal_by_me" id="qp8911_bootstrapModal" role="dialog">
-                        <div class="qp8911_modal-dialog qp8911_modal-dialog-centered" role="document" >
-                            <div class="qp8911_modal-content col-md-6 col-lg-4">
-                            <!-- Modal Header -->
-                                <!-- Modal Body -->
-                                <div class="qp8911_modal-body teez" style="border-radius: 140px;">
-                                    <div class="qp-lds-roller" id="qp-lds-roller">
-                                        <lottie-player src="'.plugins_url( 'js/animation_qp_logo.json', __FILE__ ).'" background="transparent"  speed="1"  style="width: 300px; height: 300px;" loop autoplay></lottie-player>
-                                    </div>
-                                    <iframe id="qisttpayifram" class="qisttpayifram" width="100%" height="600"  src='`+url+`'  frameborder="0" allowpaymentrequest allowfullscreen style="background: #FFFFFF;border-radius: 22px;padding: 0px;" ></iframe>
-                                </div>                      
-                            </div>
-                        </div>
-                    </div>`;
-  qisstpay_modal = htmlToElement(qisstpay_modal);
-  
-  //Modal code for cart page
-  let qisstpay_modal_cart = `<div class="qp8911_modal custom_modal_by_me" id="qp8911_bootstrapModal_cart" role="dialog">
-                        <div class="qp8911_modal-dialog qp8911_modal-dialog-centered" role="document" >
-                            <div class="qp8911_modal-content col-md-6 col-lg-4">
-                            <!-- Modal Header -->
-                                <!-- Modal Body -->
-                                <div class="qp8911_modal-body teez" style="border-radius: 140px;">
-                                    <div class="qp-lds-roller" id="qp-lds-roller">
-                                        <lottie-player src="'.plugins_url( 'js/animation_qp_logo.json', __FILE__ ).'" background="transparent"  speed="1"  style="width: 300px; height: 300px;" loop autoplay></lottie-player>
-                                    </div>
-                                    <iframe id="qisttpayifram" class="qisttpayifram" width="100%" height="600"  src='`+cart_url+`'  frameborder="0" allowpaymentrequest allowfullscreen style="background: #FFFFFF;border-radius: 22px;padding: 0px;" ></iframe>
-                                </div>                      
-                            </div>
-                        </div>
-                    </div>`;
-  qisstpay_modal_cart = htmlToElement(qisstpay_modal_cart);
+ 
   
   
   //This is the varaible that has One click button on product page assigned
