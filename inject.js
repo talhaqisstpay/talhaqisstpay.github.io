@@ -514,12 +514,3 @@ document.onreadystatechange = function(){
   
 
   
-  //Including modal in the body
-  if(document.getElementsByTagName('body')[0]){
-    document.getElementsByTagName('body')[0].appendChild(qisstpay_modal);
-  }
-  
-  //Including modal in the body
-  if(document.getElementsByTagName('body')[0]){
-    document.getElementsByTagName('body')[0].appendChild(qisstpay_modal_cart);
-  } 
