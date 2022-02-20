@@ -383,123 +383,13 @@ var qisstpay_current_timestamp=Date.now();
     return template.content.firstChild;
 }
 
-  var qisstpay_products= '';
-  let qisstpay_merchant_token = btoa(location.hostname);
-  let src = qisstpay_product ? qisstpay_product.featured_image : '';
-	src = src.indexOf('?') !== -1? src.substring(0, src.indexOf('?')): src;
-  	src = 'https::' + src;
-  
-  var attrOptions = qisstpay_product ? qisstpay_product.options: [];
-  var attributes = [];
-  var variant_id = '';
-  var variants = qisstpay_current_variant;
-  
-  
-  
-  //If product variants are available
-  if(attrOptions){
-    
-    //Get default values of attributes and assign to attributes variable
-    for(let i=0; i < attrOptions.length; i++){
-      let select = document.getElementById(`SingleOptionSelector-`+i);
-      let value = '';
-      
-      if(select){
-        value = select.options[select.selectedIndex].value;
-      }
-      
-      let key = attrOptions[i];
-      let attr = {
-        [key]: value
-      };     
 
-      attributes.push(attr);
-
-    }
-  }
   
-  if(qisstpay_product) {
-    qisstpay_products = [
-      {
-        id: qisstpay_product.id,
-        price: qisstpay_product.price/100,
-        quantity: qisstpay_product.quantity,
-        src: src,
-        title: qisstpay_product.title,
-        variant_id: qisstpay_current_variant.sku,
-        attribute: attributes
-      }
-    ];
-  }
+  
   	
 
-    let total_price = qisstpay_product ? qisstpay_product.price/100 : 0;
-  	var queryUrl = btoa(`products=`+JSON.stringify(qisstpay_products)+`&price=`+total_price+'&currency='+qisstpay_cart.currency+'&shipping_total='+0+'&tax='+0+'&url=https://sandbox.wordpress.qisstpay.com/wp-json/qisstpay/teez/');
-    //+'&price='+total_price+'&currency='+currency+'&url='+url+'/wp-json/qisstpay/teez/'+'&shipping_total='+total_shipping_price+'&tax='+total_tax
-  	var url = `https://sandbox.tezcheckout.qisstpay.com/?identity-token=`+qisstpay_merchant_token+'&queryUrl='+queryUrl;
-  
-    var cart_url = `https://sandbox.tezcheckout.qisstpay.com/?identity-token=`+qisstpay_merchant_token+'&queryUrl='+queryUrl;
-    
-    var userSelection = document.getElementsByClassName('single-option-selector');
-
-    //Event when user changes the attributes
-    for(var i = 0; i < userSelection.length; i++) {
-      (function(index) {
-        userSelection[index].addEventListener("change", function() {
-          
-          console.log(qisstpay_product.current_variant);
-          (document.getElementById('qp8911_bootstrapModal')).remove();
-          let tempKey = attrOptions[index];
-          let value = this.value;
-
-
-          let tempAttr = {
-            [tempKey]: value
-          };
-
-          attributes[index] = tempAttr;
-          console.log(attributes);
-          
-          
-          //revise the qisstpay products variable
-          qisstpay_products = [
-            {
-              id: qisstpay_product.id,
-              price: qisstpay_product.price/100,
-              quantity: qisstpay_product.quantity,
-              src: src,
-              title: qisstpay_product.title,
-              variant_id: qisstpay_current_variant.sku,
-              attribute: attributes
-            }
-          ];
-          
-          queryUrl = btoa(`products=`+JSON.stringify(qisstpay_products)+`&price=`+total_price+'&currency='+qisstpay_cart.currency+'&shipping_total='+0+'&tax='+0+'&url=https://sandbox.wordpress.qisstpay.com/wp-json/qisstpay/teez/');
-          url = `https://sandbox.tezcheckout.qisstpay.com/?identity-token=`+qisstpay_merchant_token+'&queryUrl='+queryUrl;
-        
-          qisstpay_modal = `<div class="qp8911_modal custom_modal_by_me" id="qp8911_bootstrapModal" role="dialog">
-                        <div class="qp8911_modal-dialog qp8911_modal-dialog-centered" role="document" >
-                            <div class="qp8911_modal-content col-md-6 col-lg-4">
-                            <!-- Modal Header -->
-                                <!-- Modal Body -->
-                                <div class="qp8911_modal-body teez" style="border-radius: 140px;">
-                                    <div class="qp-lds-roller" id="qp-lds-roller">
-                                        <lottie-player src="'.plugins_url( 'js/animation_qp_logo.json', __FILE__ ).'" background="transparent"  speed="1"  style="width: 300px; height: 300px;" loop autoplay></lottie-player>
-                                    </div>
-                                    <iframe id="qisttpayifram" class="qisttpayifram" width="100%" height="600"  src='`+url+`'  frameborder="0" allowpaymentrequest allowfullscreen style="background: #FFFFFF;border-radius: 22px;padding: 0px;" ></iframe>
-                                </div>                      
-                            </div>
-                        </div>
-                    </div>`;
-          
-          
-          qisstpay_modal = htmlToElement(qisstpay_modal);
-          document.getElementsByTagName('body')[0].appendChild(qisstpay_modal);
-
-          
-        })
-      })(i);
-    }
+ 
+      
   
     //Modal code for product page
 	let qisstpay_modal = `<div class="qp8911_modal custom_modal_by_me" id="qp8911_bootstrapModal" role="dialog">
