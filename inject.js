@@ -4,11 +4,149 @@ var qisstpay_cart_currency = 'pkr'
 var qisstpay_shop_money_format = 'pkr'
 var qisstpay_shop_permanent_domain = 'qisstpay.com'
 var qisstpay_theme_name = 'test'
-var qisstpay_product = 'test'
+var qisstpay_product = {
+    "id": 6906608058550,
+    "title": "Test Product Qisstpay",
+    "handle": "test-product-qisstpay",
+    "description": "Test Product",
+    "published_at": "2021-07-29T11:37:17+05:00",
+    "created_at": "2021-07-29T10:41:16+05:00",
+    "vendor": "Test Umer",
+    "type": "Test Product",
+    "tags": [],
+    "price": 160000,
+    "price_min": 160000,
+    "price_max": 160000,
+    "available": true,
+    "price_varies": false,
+    "compare_at_price": null,
+    "compare_at_price_min": 0,
+    "compare_at_price_max": 0,
+    "compare_at_price_varies": false,
+    "variants": [
+        {
+            "id": 40239807365302,
+            "title": "Default Title",
+            "option1": "Default Title",
+            "option2": null,
+            "option3": null,
+            "sku": "500",
+            "requires_shipping": true,
+            "taxable": true,
+            "featured_image": null,
+            "available": true,
+            "name": "Test Product Qisstpay",
+            "public_title": null,
+            "options": [
+                "Default Title"
+            ],
+            "price": 160000,
+            "weight": 1000,
+            "compare_at_price": null,
+            "inventory_management": "shopify",
+            "barcode": ""
+        }
+    ],
+    "images": [
+        "//cdn.shopify.com/s/files/1/0574/4964/4214/products/umarioioio.png?v=1627537278"
+    ],
+    "featured_image": "//cdn.shopify.com/s/files/1/0574/4964/4214/products/umarioioio.png?v=1627537278",
+    "options": [
+        "Title"
+    ],
+    "media": [
+        {
+            "alt": null,
+            "id": 21707529486518,
+            "position": 1,
+            "preview_image": {
+                "aspect_ratio": 1.778,
+                "height": 1080,
+                "width": 1920,
+                "src": "https://cdn.shopify.com/s/files/1/0574/4964/4214/products/umarioioio.png?v=1627537278"
+            },
+            "aspect_ratio": 1.778,
+            "height": 1080,
+            "media_type": "image",
+            "src": "https://cdn.shopify.com/s/files/1/0574/4964/4214/products/umarioioio.png?v=1627537278",
+            "width": 1920
+        }
+    ],
+    "content": "Test Product"
+}
 var qisstpay_current_variant = '9389823'
 var qisstpay_cart_total_price = '500'
 //var qisstpay_shipping_price = '788'
-var qisstpay_cart = '23'
+var qisstpay_cart = {
+    "note": null,
+    "attributes": {},
+    "original_total_price": 200000,
+    "total_price": 200000,
+    "total_discount": 0,
+    "total_weight": 0,
+    "item_count": 1,
+    "items": [
+        {
+            "id": 41027454533814,
+            "properties": null,
+            "quantity": 1,
+            "variant_id": 41027454533814,
+            "key": "41027454533814:c980b9ac37ddda3373dde3f80a0734a2",
+            "title": "Qp - Small / Black",
+            "price": 200000,
+            "original_price": 200000,
+            "discounted_price": 200000,
+            "line_price": 200000,
+            "original_line_price": 200000,
+            "total_discount": 0,
+            "discounts": [],
+            "sku": "",
+            "grams": 0,
+            "vendor": "QisstPay BNPL",
+            "taxable": true,
+            "product_id": 6906692370614,
+            "product_has_only_default_variant": false,
+            "gift_card": false,
+            "final_price": 200000,
+            "final_line_price": 200000,
+            "url": "/products/qp?variant=41027454533814",
+            "featured_image": {
+                "aspect_ratio": 1,
+                "alt": "Qp",
+                "height": 395,
+                "url": "https://cdn.shopify.com/s/files/1/0574/4964/4214/products/IMG_0950.jpg?v=1627540489",
+                "width": 395
+            },
+            "image": "https://cdn.shopify.com/s/files/1/0574/4964/4214/products/IMG_0950.jpg?v=1627540489",
+            "handle": "qp",
+            "requires_shipping": true,
+            "product_type": "",
+            "product_title": "Qp",
+            "product_description": "QP Test Product",
+            "variant_title": "Small / Black",
+            "variant_options": [
+                "Small",
+                "Black"
+            ],
+            "options_with_values": [
+                {
+                    "name": "Size",
+                    "value": "Small"
+                },
+                {
+                    "name": "Color",
+                    "value": "Black"
+                }
+            ],
+            "line_level_discount_allocations": [],
+            "line_level_total_discount": 0
+        }
+    ],
+    "requires_shipping": true,
+    "currency": "PKR",
+    "items_subtotal_price": 200000,
+    "cart_level_discount_applications": []
+}
 var qisstpay_js_snippet_version = '1.0.10';
 var qisstpay_current_timestamp=Date.now();
   function qisstpay_open_checkout() {
