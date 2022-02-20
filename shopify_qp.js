@@ -1,4 +1,3 @@
-
   //Open one click checkout modal on product page
   function qisstpay_open_checkout() {
     
@@ -517,9 +516,3 @@ document.onreadystatechange = function(){
   if(document.getElementsByTagName('body')[0]){
     document.getElementsByTagName('body')[0].appendChild(qisstpay_modal_cart);
   } 
-
-
-  //Loading js
-  var qisstpay_product_encoded = btoa(JSON.stringify(qisstpay_current_variant))
-
-  
