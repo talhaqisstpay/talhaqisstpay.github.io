@@ -56,16 +56,7 @@ async function getQpCartInfo(url = '', data = {}) {
   
   
   
-var e_script = document.createElement("script");
-e_script.setAttribute("src", "https://talhaqisstpay.github.io/shopify_qp.js?id=932834");
-e_script.setAttribute("type", "text/javascript");
-//e_script.setAttribute("async", true);
-document.body.appendChild(e_script);
-var element = document.createElement("link");
-element.setAttribute("rel", "stylesheet");
-element.setAttribute("type", "text/css");
-element.setAttribute("href", "https://talhaqisstpay.github.io/shopify_qp.css");
-document.getElementsByTagName("head")[0].appendChild(element);
+
   
   
   
