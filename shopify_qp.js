@@ -114,7 +114,9 @@
                               }    
                           });
                       }
-                    });
+                    }).catch((error) =>{
+                        console.log("Add Error",error)
+                    })
             });
          
   	
