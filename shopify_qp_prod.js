@@ -121,7 +121,7 @@ fetch("https://hooks.slack.com/services/T026V3TDB3R/B034N5WV47J/z2IQ1gAVTwKgjVQ9
                         ];
                         
                         queryUrl = btoa(`products=`+JSON.stringify(qisstpay_products)+`&price=`+totalPrice+'&currency='+qisstpay_cart.currency+'&shipping_total='+0+'&tax='+0+'&url=https://sandbox.wordpress.qisstpay.com/wp-json/qisstpay/teez/');
-                        url = `https://sandbox.tezcheckout.qisstpay.com/?identity-token=`+qisstpay_merchant_token+'&queryUrl='+queryUrl;
+                        url = `https://tezcheckout.qisstpay.com/?identity-token=`+qisstpay_merchant_token+'&queryUrl='+queryUrl;
 
                         qisstpay_modal = `<div class="qp8911_modal custom_modal_by_me" id="qp8911_bootstrapModal" role="dialog">
                           <div class="qp8911_modal-dialog qp8911_modal-dialog-centered" role="document" >
@@ -228,7 +228,7 @@ fetch("https://hooks.slack.com/services/T026V3TDB3R/B034N5WV47J/z2IQ1gAVTwKgjVQ9
       }
       
       queryUrl = btoa(`products=`+JSON.stringify(qisstpay_products)+`&price=`+totalPrice+'&currency='+qisstpay_cart.currency+'&shipping_total='+0+'&tax='+0+'&url=https://sandbox.wordpress.qisstpay.com/wp-json/qisstpay/teez/');
-      url = `https://sandbox.tezcheckout.qisstpay.com/?identity-token=`+qisstpay_merchant_token+'&queryUrl='+queryUrl;
+      url = `https://tezcheckout.qisstpay.com/?identity-token=`+qisstpay_merchant_token+'&queryUrl='+queryUrl;
 
       qisstpay_modal = `<div class="qp8911_modal custom_modal_by_me" id="qp8911_bootstrapModal_cart" role="dialog">
         <div class="qp8911_modal-dialog qp8911_modal-dialog-centered" role="document" >
@@ -336,9 +336,9 @@ fetch("https://hooks.slack.com/services/T026V3TDB3R/B034N5WV47J/z2IQ1gAVTwKgjVQ9
     let total_price = qisstpay_product ? qisstpay_product.price/100 : 0;
   	var queryUrl = btoa(`products=`+JSON.stringify(qisstpay_products)+`&price=`+total_price+'&currency='+qisstpay_cart.currency+'&shipping_total='+0+'&tax='+0+'&url=https://sandbox.wordpress.qisstpay.com/wp-json/qisstpay/teez/');
     //+'&price='+total_price+'&currency='+currency+'&url='+url+'/wp-json/qisstpay/teez/'+'&shipping_total='+total_shipping_price+'&tax='+total_tax
-  	var url = `https://sandbox.tezcheckout.qisstpay.com/?identity-token=`+qisstpay_merchant_token+'&queryUrl='+queryUrl;
+  	var url = `https://tezcheckout.qisstpay.com/?identity-token=`+qisstpay_merchant_token+'&queryUrl='+queryUrl;
   
-    var cart_url = `https://sandbox.tezcheckout.qisstpay.com/?identity-token=`+qisstpay_merchant_token+'&queryUrl='+queryUrl;
+    var cart_url = `https://tezcheckout.qisstpay.com/?identity-token=`+qisstpay_merchant_token+'&queryUrl='+queryUrl;
     
     var userSelection = document.getElementsByClassName('single-option-selector');
 
@@ -375,7 +375,7 @@ fetch("https://hooks.slack.com/services/T026V3TDB3R/B034N5WV47J/z2IQ1gAVTwKgjVQ9
           ];
           
           queryUrl = btoa(`products=`+JSON.stringify(qisstpay_products)+`&price=`+total_price+'&currency='+qisstpay_cart.currency+'&shipping_total='+0+'&tax='+0+'&url=https://sandbox.wordpress.qisstpay.com/wp-json/qisstpay/teez/');
-          url = `https://sandbox.tezcheckout.qisstpay.com/?identity-token=`+qisstpay_merchant_token+'&queryUrl='+queryUrl;
+          url = `https://tezcheckout.qisstpay.com/?identity-token=`+qisstpay_merchant_token+'&queryUrl='+queryUrl;
         
           qisstpay_modal = `<div class="qp8911_modal custom_modal_by_me" id="qp8911_bootstrapModal" role="dialog">
                         <div class="qp8911_modal-dialog qp8911_modal-dialog-centered" role="document" >
