@@ -265,3 +265,26 @@ margin-bottom:5px;
       transform: rotate(360deg);
     }
   }
+@media only screen and (max-width: 600px) {
+  .qp8911_modal-content {width: 80%;}
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+  .qp8911_modal-content {width: 70%;}
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    .qp8911_modal-content {width: 50%;}
+} 
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+    .qp8911_modal-content {width: 30%;}
+} 
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+    .qp8911_modal-content {width: 30%;}
+}
