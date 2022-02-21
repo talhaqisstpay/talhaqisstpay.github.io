@@ -1,3 +1,22 @@
+function slack_hook(){
+  var myHeaders = new Headers();
+myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
+
+var urlencoded = new URLSearchParams();
+urlencoded.append("payload", "{\"channel\": \"#shopify-errors\", \"username\": \"QP_Shopify\", \"text\": \"Error : Product ID Not Found\\nURL : \",\"icon_emoji\":\":ghost\"}");
+
+var requestOptions = {
+  method: 'POST',
+  headers: myHeaders,
+  body: urlencoded,
+  redirect: 'follow'
+};
+
+fetch("https://hooks.slack.com/services/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", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+}
   //Open one click checkout modal on product page
   function qisstpay_open_checkout() {
     
@@ -11,7 +30,7 @@
                 const params = new URLSearchParams(window.location.search)
                 
                 var product_details = {
-                    'id':params.has('variant') ? params.get('variant') : document.getElementById('product-selectors') ? document.getElementById('product-selectors').value :  qisstpay_current_variant.id ,
+                   'id':params.has('variant') ? params.get('variant') : document.getElementById('product-selectors') ? document.getElementById('product-selectors').value :  qisstpay_current_variant.id ,
                     'form_type': 'product',
                     'utf8': '✓'
                 };
@@ -32,6 +51,10 @@
                 }).then(res => res.json())
                     .then(res => {
                       console.log("Responsse",res);
+                      if(res.status == "bad_request"){
+                        console.log("Slack Webhook")
+                        slack_hook();
+                      }
                       if(res){
                         (document.getElementById('qp8911_bootstrapModal')).remove();
                         let qisstpay_merchant_token_cart = btoa(location.hostname);
