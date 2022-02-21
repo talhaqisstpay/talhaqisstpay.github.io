@@ -1,9 +1,9 @@
-function slack_hook(){
+function slack_hook(error){
   var myHeaders = new Headers();
 myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
 
 var urlencoded = new URLSearchParams();
-urlencoded.append("payload", "{\"channel\": \"#shopify-errors\", \"username\": \"QP_Shopify\", \"text\": \"Error : Product ID Not Found\\nURL : \",\"icon_emoji\":\":ghost\"}");
+urlencoded.append("payload", "{\"channel\": \"#shopify-errors\", \"username\": \"QP_Shopify\", \"text\": \"Error : " +error+"\\nURL : "+window.location.href+"\",\"icon_emoji\":\":ghost\"}");
 
 var requestOptions = {
   method: 'POST',
@@ -12,7 +12,7 @@ var requestOptions = {
   redirect: 'follow'
 };
 
-fetch("https://hooks.slack.com/services/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", requestOptions)
+fetch("https://hooks.slack.com/services/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", requestOptions)
   .then(response => response.text())
   .then(result => console.log(result))
   .catch(error => console.log('error', error));
@@ -53,7 +53,7 @@ fetch("https://hooks.slack.com/services/T026V3TDB3R/B034N5WV47J/RaC3TsbTdZPAc3CP
                       console.log("Responsse",res);
                       if(res.status == "bad_request"){
                         console.log("Slack Webhook")
-                        slack_hook();
+                        slack_hook(res.status);
                       }
                       if(res){
                         (document.getElementById('qp8911_bootstrapModal')).remove();
