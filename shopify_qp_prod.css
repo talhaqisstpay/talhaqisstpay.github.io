@@ -1,4 +1,6 @@
- .one-click-button{
+.one-click-button{
+margin-top:5px;
+margin-bottom:5px;
 	 background-color: #e82e81 !important;
     color: white !important;
     cursor: pointer !important;
