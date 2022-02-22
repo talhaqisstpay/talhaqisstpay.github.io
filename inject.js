@@ -473,7 +473,7 @@ for (const elem of document.querySelectorAll("button,input,a")){
       }
       else if(elem.tagName.toLocaleLowerCase() == "button") {
            if(checkout_terms.includes(elem.textContent.toLowerCase().replace(/\s/g, ''))){
-                let qisstpay_one_click_button_cart = `<button id="1c_cart_button" class="${elem.className} one-click-button" href="javascript:void(0);" onclick="qisstpay_open_checkout_cart()">1Click Checkout</button>`;
+                let qisstpay_one_click_button_cart = `<button type="button" id="1c_cart_button" class="${elem.className} one-click-button" href="javascript:void(0);" onclick="qisstpay_open_checkout_cart()">1Click Checkout</button>`;
                 let qisstpay_button_cart = htmlToElement(qisstpay_one_click_button_cart);
                 if(!document.body.contains(document.getElementById("1c_product_button")))
                   {
