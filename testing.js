@@ -1,3 +1,10 @@
+function htmlToElement(html) {
+    var template = document.createElement('template');
+    html = html.trim(); // Never return a text node of whitespace as the result
+    template.innerHTML = html;
+    return template.content.firstChild;
+}
+
 function add_button_product_page(){
 //Add one click button on product page  
 var add_to_cart_terms = ['addtocart','addtobag','addtobasket']
