@@ -495,7 +495,8 @@ for (const elem of document.querySelectorAll("button,input,a")){
       }
   }
 }
-  
+     add_button_product_page();
+  	add_button_cart_page();
 document.onreadystatechange = function(){
 
   if(!document.body.contains(document.getElementById("1c_product_button")))
