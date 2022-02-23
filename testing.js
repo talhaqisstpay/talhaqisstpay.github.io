@@ -74,5 +74,9 @@ for (const elem of document.querySelectorAll("button,input,a")){
       }
   }
 }
+
+window.addEventListener('load', function() {
 add_button_product_page();
 add_button_cart_page();
+})
+
