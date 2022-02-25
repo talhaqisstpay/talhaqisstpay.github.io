@@ -1,5 +1,17 @@
  /////code
-  
+ function remove_payment_methods(){
+    for(const elem of document.querySelectorAll('[data-testid="ShopifyPay-button"]')){
+        elem.remove()
+    }
+    
+    for(const elem of document.querySelectorAll('[data-testid="GooglePay-button"]')){
+        elem.remove()
+    } 
+    
+    for(const elem of document.querySelectorAll('[data-testid="FacebookPay-button"]')){
+        elem.remove()
+    }
+} 
    async function getQisstPayMerchantToken(url = '', data = {}) {
   // Default options are marked with *
   const response = await fetch(url, {
@@ -589,6 +601,7 @@ document.onreadystatechange = function(){
 var intervalId = window.setInterval(function(){
   add_button_cart_page()
   remove_buyit();
+  remove_payment_methods();
 }, 10);
   
 
