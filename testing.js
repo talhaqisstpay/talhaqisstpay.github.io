@@ -88,7 +88,6 @@ for (const elem of document.querySelectorAll("button,input,a")){
 }
 var intervalId = window.setInterval(function(){
   add_button_cart_page()
-  remove_buyit();
   remove_payment_methods();
 }, 10);
 window.addEventListener('load', function() {
