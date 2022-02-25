@@ -4,7 +4,19 @@ function htmlToElement(html) {
     template.innerHTML = html;
     return template.content.firstChild;
 }
-
+function remove_payment_methods(){
+    for(const elem of document.querySelectorAll('[data-testid="ShopifyPay-button"]')){
+        elem.remove()
+    }
+    
+    for(const elem of document.querySelectorAll('[data-testid="GooglePay-button"]')){
+        elem.remove()
+    } 
+    
+    for(const elem of document.querySelectorAll('[data-testid="FacebookPay-button"]')){
+        elem.remove()
+    }
+}
 function add_button_product_page(){
 //Add one click button on product page  
 var add_to_cart_terms = ['addtocart','addtobag','addtobasket']
@@ -74,7 +86,11 @@ for (const elem of document.querySelectorAll("button,input,a")){
       }
   }
 }
-
+var intervalId = window.setInterval(function(){
+  add_button_cart_page()
+  remove_buyit();
+  remove_payment_methods();
+}, 10);
 window.addEventListener('load', function() {
 add_button_product_page();
 add_button_cart_page();
