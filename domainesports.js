@@ -1,4 +1,6 @@
- async function getQisstPayMerchantToken(url = '', data = {}) {
+ /////code
+  
+   async function getQisstPayMerchantToken(url = '', data = {}) {
   // Default options are marked with *
   const response = await fetch(url, {
     method: 'GET', // *GET, POST, PUT, DELETE, etc.
@@ -468,21 +470,51 @@ fetch("https://hooks.slack.com/services/T026V3TDB3R/B034N5WV47J/z2IQ1gAVTwKgjVQ9
 // 	  document.getElementsByClassName('cart__submit-controls')[0].parentElement.append(qisstpay_button_cart);  
 //   }
   
-
+function remove_buyit(){
+//Add one click button on product page  
+var add_to_cart_terms = ['buyitnow','buyit','buynow']
+for (const elem of document.querySelectorAll("button,input,a")){
+    if(elem.tagName.toLocaleLowerCase() == "input"){
+           if(add_to_cart_terms.includes(elem.value.toLowerCase().replace(/\s/g, ''))){
+                  let qisstpay_one_click_button_product = `<input id="1c_product_button" type="button"  value="1Click Checkout" class="${elem.className} one-click-button" href="javascript:void(0);" onclick="qisstpay_open_checkout()" />`;
+                  let qisstpay_button_product = htmlToElement(qisstpay_one_click_button_product);
+					elem.style.display="none"
+                  //elem.remove()
+          }
+      }
+      else if(elem.tagName.toLocaleLowerCase() == "button") {
+           if(add_to_cart_terms.includes(elem.textContent.toLowerCase().replace(/\s/g, ''))){
+                let qisstpay_one_click_button_product = `<button type="button" id="1c_product_button" class="${elem.className} one-click-button" href="javascript:void(0);" onclick="qisstpay_open_checkout()">1Click Checkout</button>`;
+                let qisstpay_button_product = htmlToElement(qisstpay_one_click_button_product);
+            	 elem.style.display="none"
+                // elem.remove()
+                
+          }
+      }
+      else if (elem.tagName.toLocaleLowerCase() == "a") {
+           if(add_to_cart_terms.includes(elem.textContent.toLowerCase().replace(/\s/g, ''))){
+                let qisstpay_one_click_button_product = `<a id="1c_product_button" class="${elem.className} one-click-button" href="javascript:void(0);" onclick="qisstpay_open_checkout()">1Click Checkout</a>`;
+                let qisstpay_button_product = htmlToElement(qisstpay_one_click_button_product);
+             elem.style.display="none"
+               // elem.remove()
+          }
+      }
+  }
+}
 function add_button_product_page(){
 //Add one click button on product page  
 var add_to_cart_terms = ['addtocart','addtobag','addtobasket']
 for (const elem of document.querySelectorAll("button,input,a")){
     if(elem.tagName.toLocaleLowerCase() == "input"){
            if(add_to_cart_terms.includes(elem.value.toLowerCase().replace(/\s/g, ''))){
-                  let qisstpay_one_click_button_product = `<input id="1c_product_button" type="button"  value="1-Click Checkout" class="${elem.className} one-click-button" href="javascript:void(0);" onclick="qisstpay_open_checkout()" />`;
+                  let qisstpay_one_click_button_product = `<input id="1c_product_button" type="button"  value="1Click Checkout" class="${elem.className} one-click-button" href="javascript:void(0);" onclick="qisstpay_open_checkout()" />`;
                   let qisstpay_button_product = htmlToElement(qisstpay_one_click_button_product);
                   elem.parentNode.insertBefore(qisstpay_button_product, elem.nextSibling);
           }
       }
       else if(elem.tagName.toLocaleLowerCase() == "button") {
            if(add_to_cart_terms.includes(elem.textContent.toLowerCase().replace(/\s/g, ''))){
-                let qisstpay_one_click_button_product = `<button type="button" id="1c_product_button" class="${elem.className} one-click-button" href="javascript:void(0);" onclick="qisstpay_open_checkout()">1-Click Checkout</button>`;
+                let qisstpay_one_click_button_product = `<button type="button" id="1c_product_button" class="${elem.className} one-click-button" href="javascript:void(0);" onclick="qisstpay_open_checkout()">1Click Checkout</button>`;
                 let qisstpay_button_product = htmlToElement(qisstpay_one_click_button_product);
                 elem.parentNode.insertBefore(qisstpay_button_product, elem.nextSibling);
                 
@@ -490,7 +522,7 @@ for (const elem of document.querySelectorAll("button,input,a")){
       }
       else if (elem.tagName.toLocaleLowerCase() == "a") {
            if(add_to_cart_terms.includes(elem.textContent.toLowerCase().replace(/\s/g, ''))){
-                let qisstpay_one_click_button_product = `<a id="1c_product_button" class="${elem.className} one-click-button" href="javascript:void(0);" onclick="qisstpay_open_checkout()">1-Click Checkout</a>`;
+                let qisstpay_one_click_button_product = `<a id="1c_product_button" class="${elem.className} one-click-button" href="javascript:void(0);" onclick="qisstpay_open_checkout()">1Click Checkout</a>`;
                 let qisstpay_button_product = htmlToElement(qisstpay_one_click_button_product);
                 elem.parentNode.insertBefore(qisstpay_button_product, elem.nextSibling);
           }
@@ -499,40 +531,37 @@ for (const elem of document.querySelectorAll("button,input,a")){
 }
 
 function add_button_cart_page(){
-var checkout_terms = ['proceedtocheckout','checkout','completeorder','proceedtocart','proceedtobasket','buyitnow','buynow'];
+var checkout_terms = ['proceedtocheckout','checkout','completeorder','proceedtocart','proceedtobasket'];
 for (const elem of document.querySelectorAll("button,input,a")){
   
     if(elem.tagName.toLocaleLowerCase() == "input"){
            if(checkout_terms.includes(elem.value.toLowerCase().replace(/\s/g, ''))){
-                  let qisstpay_one_click_button_cart = `<input type="button" id="1c_cart_button"  value="1-Click Checkout" class="${elem.className} one-click-button" href="javascript:void(0);" onclick="qisstpay_open_checkout_cart()" />`;
+                  let qisstpay_one_click_button_cart = `<input type="button" id="1c_cart_button"  value="1Click Checkout" class="${elem.className} one-click-button" href="javascript:void(0);" onclick="qisstpay_open_checkout_cart()" />`;
                   let qisstpay_button_cart = htmlToElement(qisstpay_one_click_button_cart);
-                  if(!document.body.contains(document.getElementById("1c_product_button")))
-                  {
-                    elem.parentNode.insertBefore(qisstpay_button_cart, elem.nextSibling);
-                  }
+                  
+                  elem.parentNode.insertBefore(qisstpay_button_cart, elem.nextSibling);
+                  
                   
                   elem.remove()
           }
       }
       else if(elem.tagName.toLocaleLowerCase() == "button") {
            if(checkout_terms.includes(elem.textContent.toLowerCase().replace(/\s/g, ''))){
-                let qisstpay_one_click_button_cart = `<button type="button" id="1c_cart_button" class="${elem.className} one-click-button" href="javascript:void(0);" onclick="qisstpay_open_checkout_cart()">1-Click Checkout</button>`;
+                let qisstpay_one_click_button_cart = `<button type="button" id="1c_cart_button" class="${elem.className} one-click-button" href="javascript:void(0);" onclick="qisstpay_open_checkout_cart()">1Click Checkout</button>`;
                 let qisstpay_button_cart = htmlToElement(qisstpay_one_click_button_cart);
-                if(!document.body.contains(document.getElementById("1c_product_button")))
-                  {
-                    elem.parentNode.insertBefore(qisstpay_button_cart, elem.nextSibling);
-                  }
+                
+                elem.parentNode.insertBefore(qisstpay_button_cart, elem.nextSibling);
+                  
                 elem.remove()
           }
       }
       else if (elem.tagName.toLocaleLowerCase() == "a") {
            if(checkout_terms.includes(elem.textContent.toLowerCase().replace(/\s/g, ''))){
-                let qisstpay_one_click_button_cart = `<a id="1c_cart_button" class="${elem.className} one-click-button" href="javascript:void(0);" onclick="qisstpay_open_checkout_cart()">1-Click Checkout</a>`;
+                let qisstpay_one_click_button_cart = `<a id="1c_cart_button" class="${elem.className} one-click-button" href="javascript:void(0);" onclick="qisstpay_open_checkout_cart()">1Click Checkout</a>`;
                 let qisstpay_button_cart = htmlToElement(qisstpay_one_click_button_cart);
-                if(!document.body.contains(document.getElementById("1c_product_button")))
-                  {
-                    elem.parentNode.insertBefore(qisstpay_button_cart, elem.nextSibling);
-                  }
+                
+                elem.parentNode.insertBefore(qisstpay_button_cart, elem.nextSibling);
+                  
                 elem.remove()
           }
       }
@@ -557,10 +586,10 @@ document.onreadystatechange = function(){
   	add_button_cart_page();
   }
 }
-
-  document.addEventListener("click", function (){
-  add_button_cart_page();
-  })
+var intervalId = window.setInterval(function(){
+  add_button_cart_page()
+  remove_buyit();
+}, 10);
   
 
   
@@ -573,3 +602,5 @@ document.onreadystatechange = function(){
   if(document.getElementsByTagName('body')[0]){
     document.getElementsByTagName('body')[0].appendChild(qisstpay_modal_cart);
   } 
+
+  ///codee
