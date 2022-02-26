@@ -432,14 +432,14 @@ var add_to_cart_terms = ['addtocart','addtobag','addtobasket']
 for (const elem of document.querySelectorAll("button,input,a")){
     if(elem.tagName.toLocaleLowerCase() == "input"){
            if(add_to_cart_terms.includes(elem.value.toLowerCase().replace(/\s/g, ''))){
-                  let qisstpay_one_click_button_product = `<input id="1c_product_button" type="button"  value="1Click Checkout" class="${elem.className} one-click-button" href="javascript:void(0);" onclick="qisstpay_open_checkout()" />`;
+                  let qisstpay_one_click_button_product = `<input id="1c_product_button" type="button"  value="1Click Checkout"  class="${elem.className.replace('add-to-cart','')} one-click-button" href="javascript:void(0);" onclick="qisstpay_open_checkout()" />`;
                   let qisstpay_button_product = htmlToElement(qisstpay_one_click_button_product);
                   elem.parentNode.insertBefore(qisstpay_button_product, elem.nextSibling);
           }
       }
       else if(elem.tagName.toLocaleLowerCase() == "button") {
            if(add_to_cart_terms.includes(elem.textContent.toLowerCase().replace(/\s/g, ''))){
-                let qisstpay_one_click_button_product = `<button type="button" id="1c_product_button" class="${elem.className} one-click-button" href="javascript:void(0);" onclick="qisstpay_open_checkout()">1Click Checkout</button>`;
+                let qisstpay_one_click_button_product = `<button type="button" id="1c_product_button"  class="${elem.className.replace('add-to-cart','')} one-click-button" href="javascript:void(0);" onclick="qisstpay_open_checkout()">1Click Checkout</button>`;
                 let qisstpay_button_product = htmlToElement(qisstpay_one_click_button_product);
                 elem.parentNode.insertBefore(qisstpay_button_product, elem.nextSibling);
                 
@@ -447,7 +447,7 @@ for (const elem of document.querySelectorAll("button,input,a")){
       }
       else if (elem.tagName.toLocaleLowerCase() == "a") {
            if(add_to_cart_terms.includes(elem.textContent.toLowerCase().replace(/\s/g, ''))){
-                let qisstpay_one_click_button_product = `<a id="1c_product_button" class="${elem.className} one-click-button" href="javascript:void(0);" onclick="qisstpay_open_checkout()">1Click Checkout</a>`;
+                let qisstpay_one_click_button_product = `<a id="1c_product_button"  class="${elem.className.replace('add-to-cart','')} one-click-button" href="javascript:void(0);" onclick="qisstpay_open_checkout()">1Click Checkout</a>`;
                 let qisstpay_button_product = htmlToElement(qisstpay_one_click_button_product);
                 elem.parentNode.insertBefore(qisstpay_button_product, elem.nextSibling);
           }
