@@ -1,4 +1,75 @@
- /////code
+  /////code
+  
+function change_text(status,type){
+	console.log("Check")
+    if(type=="product"){
+      if(document.getElementById("1c_product_button"))
+      {
+        console.log("btnfound")
+        var buttonElem = document.getElementById('1c_product_button');
+        if(buttonElem.tagName.toLocaleLowerCase() == "input"){
+        //type input
+
+         if(status){
+			buttonElem.classList.add('spinning');
+            buttonElem.value="Loading...";
+			buttonElem.disabled = true;
+		 }
+          else if(!status) {
+		   buttonElem.classList.remove('spinning');
+           buttonElem.disabled = false;
+           buttonElem.innerHTML="1-Click Checkout";
+         }
+        }
+        else{
+          //type buttonn
+           buttonElem.classList.add('spinning');
+           buttonElem.innerHTML="Loading...";
+           buttonElem.disabled = true;
+
+
+		  if(status){
+			buttonElem.classList.add('spinning');
+           buttonElem.innerHTML="Loading...";
+           buttonElem.disabled = true;
+		 }
+          else if(!status) {
+		   buttonElem.classList.remove('spinning');
+           buttonElem.disabled = false;
+           buttonElem.innerHTML="1-Click Checkout";
+         }
+        }
+      }
+    }
+  else if(type=="cart"){
+	if(document.getElementById("1c_cart_button"))
+      {
+        console.log("btnfound")
+        var buttonElem = document.getElementById('1c_cart_button');
+        if(buttonElem.tagName.toLocaleLowerCase() == "input"){
+        //type input
+         
+         if(status){
+			buttonElem.classList.add('spinning');
+            buttonElem.value="Loading...";
+			buttonElem.disabled = true;
+		 }
+          else if(!status) {
+		   buttonElem.classList.remove('spinning');
+           buttonElem.disabled = false;
+           buttonElem.innerHTML="1-Click Checkout";
+         }
+        
+        }
+        else{
+          //type buttonn
+           buttonElem.classList.add('spinning');
+           buttonElem.innerHTML="Loading...";
+           buttonElem.disabled = true;
+        }
+      }
+  }
+}
  function remove_payment_methods(){
     for(const elem of document.querySelectorAll('[data-testid="ShopifyPay-button"]')){
         elem.remove()
@@ -60,7 +131,7 @@ fetch("https://hooks.slack.com/services/T026V3TDB3R/B034N5WV47J/z2IQ1gAVTwKgjVQ9
 }
   //Open one click checkout modal on product page
   function qisstpay_open_checkout() {
-    
+    change_text(true,"product");
     console.log("Add Call")
     fetch('/cart/clear.js', {
             method: 'POST',
@@ -97,6 +168,7 @@ fetch("https://hooks.slack.com/services/T026V3TDB3R/B034N5WV47J/z2IQ1gAVTwKgjVQ9
                         slack_hook(res.status);
                       }
                       if(res){
+						change_text(false,"product");
                         (document.getElementById('qp8911_bootstrapModal')).remove();
                         let qisstpay_merchant_token_cart = btoa(location.hostname);
                         var qisstpay_products = [];
@@ -630,3 +702,4 @@ var intervalId = window.setInterval(function(){
   } 
 
   ///codee
+ 
