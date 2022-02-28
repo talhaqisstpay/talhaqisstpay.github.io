@@ -288,3 +288,8 @@ margin-bottom:5px;
 @media only screen and (min-width: 1200px) {
     .qp8911_modal-content {width: 30%;}
 }
+
+.one-click-button.spinning {
+  padding-right: 40px;
+  background-color: grey !important;
+}
