@@ -676,8 +676,8 @@ window.addEventListener('click', function(event){
 	var QP_MODAL = document.getElementsByClassName('qp8911_modal-body teez');
     
 	if (event.target != QP_MODAL && event.target.parentNode != QP_MODAL){
-        document.getElementById('qp8911_bootstrapModal').style.display = 'none';
-        document.getElementById('qp8911_bootstrapModal_cart').style.display = 'none';
+//         document.getElementById('qp8911_bootstrapModal').style.display = 'none';
+//         document.getElementById('qp8911_bootstrapModal_cart').style.display = 'none';
     }
 });
 //closing modal on clicking outside iframe
