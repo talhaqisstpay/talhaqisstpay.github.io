@@ -631,6 +631,20 @@ for (const elem of document.querySelectorAll("button,input,a")){
 }
 
 function add_button_cart_page(){
+
+//custom selector million standards 
+for (const ele of document.querySelectorAll(".btn--checkout")){
+
+   
+		    ele.style.margin = "10px"
+                let qisstpay_one_click_button_product = `<button type="button" id="1c_product_button"  class="${ele.className.replace('add-to-cart','').replace('single_add_to_cart_button','')} one-click-button" href="javascript:void(0);" onclick="qisstpay_open_checkout()">1-Click Checkout</button>`;
+                let qisstpay_button_product = htmlToElement(qisstpay_one_click_button_product);
+                ele.parentNode.insertBefore(qisstpay_button_product, ele.nextSibling);
+		ele.remove()
+                
+          
+}
+//custom selector million standards
 var checkout_terms = ['proceedtocheckout','checkout','completeorder','proceedtocart','proceedtobasket'];
 for (const elem of document.querySelectorAll("button,input,a")){
   
