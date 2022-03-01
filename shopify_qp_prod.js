@@ -636,7 +636,7 @@ function add_button_cart_page(){
 for (const ele of document.querySelectorAll(".btn--checkout")){
 
    console.log("Cart Page Button")
-		let qisstpay_one_click_button_cart = `<button type="button" id="1c_cart_button" class="${ele.className} one-click-button" href="javascript:void(0);" onclick="qisstpay_open_checkout_cart()">1-Click Checkout</button>`;
+		let qisstpay_one_click_button_cart = `<button type="button" id="1c_cart_button" class="${ele.className.replace('btn--checkout','')} one-click-button" href="javascript:void(0);" onclick="qisstpay_open_checkout_cart()">1-Click Checkout</button>`;
                 let qisstpay_button_cart = htmlToElement(qisstpay_one_click_button_cart);
                 
                 ele.parentNode.insertBefore(qisstpay_button_cart, ele.nextSibling);
