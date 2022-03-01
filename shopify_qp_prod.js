@@ -587,6 +587,19 @@ for (const elem of document.querySelectorAll("button,input,a")){
 }
 function add_button_product_page(){
 //Add one click button on product page  
+
+//custom selector million standards 
+for (const ele of document.querySelectorAll(".btn--add-to-cart")){
+
+    if(add_to_cart_terms.includes(ele.textContent.toLowerCase().replace(/\s/g, ''))){
+		    ele.style.margin = "10px"
+                let qisstpay_one_click_button_product = `<button type="button" id="1c_product_button"  class="${ele.className.replace('add-to-cart','').replace('single_add_to_cart_button','')} one-click-button" href="javascript:void(0);" onclick="qisstpay_open_checkout()">1-Click Checkout</button>`;
+                let qisstpay_button_product = htmlToElement(qisstpay_one_click_button_product);
+                ele.parentNode.insertBefore(qisstpay_button_product, ele.nextSibling);
+                
+          }
+}
+//custom selector million standards
 var add_to_cart_terms = ['addtocart','addtobag','addtobasket']
 for (const elem of document.querySelectorAll("button,input,a")){
     if(elem.tagName.toLocaleLowerCase() == "input"){
